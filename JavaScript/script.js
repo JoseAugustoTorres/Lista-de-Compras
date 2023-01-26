@@ -1,11 +1,18 @@
 let lista = [];
+let teclaPressionada = document.getElementById("entrada-itens");
+
+teclaPressionada.addEventListener("keydown", (evento) => {
+  if (evento.key === "Enter") {
+    pegarValorInput();
+  }
+});
 
 function pegarValorInput() {
   var regex = /^[A-zÀ-ú ]+$/;
   var valorEntrada = document.getElementById("entrada-itens").value;
   valorEntrada = valorEntrada.trim();
 
-  if (valorEntrada.value == "undefined") {
+  if (valorEntrada === undefined) {
     alert("Nenhum item informado");
     return limparEntrada();
   } else if (!valorEntrada.match(regex)) {
@@ -20,22 +27,32 @@ function pegarValorInput() {
 
 function adicionarItens(valorEntrada) {
   lista.push(valorEntrada);
-  console.log(lista);
 
   mostrarListaTela();
 }
 
 function mostrarListaTela() {
+  var mensagem = document.getElementById("msg-lista");
   var telaLista = document.getElementById("lista");
-  var itensLista = document.createElement("div");
-  var linhaEntre = document.createElement("div");
+  var itens = document.createElement("li");
+  var blocoItem = document.createElement("label");
+  var blocoIcone = document.createElement("span");
+  var iconeExcluir = document.createElement("i");
 
-  itensLista.classList.add("itens-lista");
-  itensLista.textContent = lista.slice(-1);
-  telaLista.appendChild(itensLista);
+  mensagem.remove();
 
-  linhaEntre.classList.add("linha-entre-itens");
-  telaLista.appendChild(linhaEntre);
+  itens.classList.add("itens");
+  telaLista.appendChild(itens);
+
+  blocoItem.textContent = lista.slice(-1);
+  itens.appendChild(blocoItem);
+
+  itens.appendChild(blocoIcone);
+
+  iconeExcluir.classList.add("bx", "bx-trash");
+  blocoIcone.appendChild(iconeExcluir);
+
+  blocoIcone.setAttribute("onclick", "excluirItem()");
 
   limparEntrada();
 }
@@ -44,3 +61,5 @@ function limparEntrada() {
   var valorEntrada = document.getElementById("entrada-itens");
   valorEntrada.value = "";
 }
+
+function excluirItem() {}

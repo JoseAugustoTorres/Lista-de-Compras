@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./CSS/styles.css" />
-    <script src="./JavaScript/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Sono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
     <title>Lista de Compras</title>
@@ -30,8 +33,19 @@
         <button class="botao-adicionar" onclick="pegarValorInput()">
           Adicionar
         </button>
-        <div class="lista" id="lista" aria-placeholder="aaa"></div>
+        <div id="bloco-itens">
+          <div id="msg-lista">
+            Digite um item e adicione à lista clicando no botão ou pressione a
+            tecla 'Enter'.
+          </div>
+          <ul class="lista" id="lista"></ul>
+        </div>
       </div>
     </section>
   </body>
+  <script src="./JavaScript/script.js"></script>
+  <script
+    src="https://kit.fontawesome.com/27acbd01ae.js"
+    crossorigin="anonymous"
+  ></script>
 </html>

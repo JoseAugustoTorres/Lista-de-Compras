@@ -1,7 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
+font-family: 'Sono', sans-serif;
 }
 
 #lista-de-compras{
@@ -9,9 +10,8 @@
     background: linear-gradient(204deg, rgba(255,246,0,1) 6%, rgba(121,0,255,1) 88%);
     height: 100vh;
     width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
 }
 
 .bloco-lista{
@@ -49,7 +49,7 @@ h1{
     grid-area: entrada;
     height: 5vh;
     width: 220px;
-    font-size: 22px;
+    font-size: 21px;
     border-radius: 1rem;
     border-color: black;
     text-align: center;
@@ -60,7 +60,7 @@ h1{
 .botao-adicionar{
     grid-area: botao-adicionar;
     height: 5vh;
-    width: 75px;
+    width: 80px;
     margin-right: 2vw;
     border-color: rgb(255, 255, 255);
     border-radius: 1rem;
@@ -104,14 +104,40 @@ h1{
     width: 280px;
 }
 
-@media (max-width: 880px){
+@media (max-width: 600px){
+    #lista-de-compras{
+        background: linear-gradient(90deg, rgba(255,246,0,1) 6%, rgba(121,0,255,1) 88%);
+    }
 
-}
+    .bloco-lista{
+        grid-template-areas: 
+        "titulo"
+        "entrada"
+        "botao-adicionar"
+        "saida";
+        grid-template-columns: 300px;
+        grid-template-rows: 70px 70px 70px 270px;
+        width: 300px;
+        justify-content: center;
+    }
 
-@media (button: hover) {
-    button:hover {
-        background-color: rgb(255, 255, 255);
-        border-color: rgb(0, 0, 0);
-        color: rgb(0, 0, 0);
+    h1{
+        font-size: 30px;
+        width: 300px;
+    }
+
+    .entrada-itens{
+        font-size: 20px;
+        margin-top: 20px;
+        justify-self: center;
+    }
+    
+    .botao-adicionar{
+        justify-self: center;
+        margin: 0;
+    }
+
+    .linha-entre-itens{
+        width: 200px;
     }
 }

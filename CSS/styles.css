@@ -60,8 +60,8 @@ h1{
 .botao-adicionar{
     grid-area: botao-adicionar;
     height: 5vh;
-    width: 80px;
-    margin-right: 2vw;
+    width: 90px;
+    
     border-color: rgb(255, 255, 255);
     border-radius: 1rem;
     background-color: rgb(0, 0, 0);
@@ -74,6 +74,12 @@ h1{
 .botao-adicionar:hover{
     background-color: rgb(255, 255, 255);
     border-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+}
+
+.botao-adicionar:active{
+    background-color: rgb(70, 70, 70);
+    border-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
 }
 
@@ -116,18 +122,19 @@ h1{
         "botao-adicionar"
         "saida";
         grid-template-columns: 300px;
-        grid-template-rows: 70px 70px 70px 270px;
+        grid-template-rows: 70px 70px 70px 245px;
+        height: 450px;
         width: 300px;
         justify-content: center;
     }
 
     h1{
-        font-size: 30px;
+        font-size: 26px;
         width: 300px;
     }
 
     .entrada-itens{
-        font-size: 20px;
+        font-size: 18px;
         margin-top: 20px;
         justify-self: center;
     }
@@ -135,6 +142,7 @@ h1{
     .botao-adicionar{
         justify-self: center;
         margin: 0;
+        margin-top: 15px;
     }
 
     .linha-entre-itens{

@@ -5,12 +5,14 @@ function pegarValorInput() {
   var valorEntrada = document.getElementById("entrada-itens").value;
   valorEntrada = valorEntrada.trim();
 
-  console.log(valorEntrada.textContent);
-
-  if (!valorEntrada.match(regex)) {
+  if (valorEntrada.value == "undefined") {
+    alert("Nenhum item informado");
+    return limparEntrada();
+  } else if (!valorEntrada.match(regex)) {
     alert("Caracteres inválidos");
     return limparEntrada();
   }
+
   valorEntrada.toLowerCase();
 
   adicionarItens(valorEntrada);

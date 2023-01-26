@@ -94,8 +94,7 @@ h1{
     color: black;
     margin: 1.5rem;
     padding: 1rem;
-    /*itens da lista*/
-
+    overflow-y: auto;
 }
 
 #msg-lista{
@@ -104,7 +103,6 @@ h1{
 }
 
 .lista{
-    grid-area: itens;
     list-style: none;
     overflow-y: auto;
     text-align: center;

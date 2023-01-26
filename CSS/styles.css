@@ -16,7 +16,8 @@
 
 .bloco-lista{
     display: grid;
-    grid-template-rows: 10vh 10vh 30vh;
+    grid-template-rows: 93px 93px 279px;
+    grid-template-columns: 250px 150px;
     grid-template-areas: 
     "titulo titulo"
     "entrada botao-adicionar"
@@ -24,15 +25,15 @@
     background-color: black;
     border-radius: 0.4rem;
     box-shadow: 0 0 80px rgba(0, 0, 0, 0.8);
-    height: 50vh;
-    width: 40vw;
+    height: 500px;
+    width: 400px;
 }
 
 .titulo{
     display: grid;
     grid-area: titulo;
     place-items: center;
-    height: 10vh;
+    height: 93px;
 }
 
 h1{
@@ -41,13 +42,13 @@ h1{
     font-size: 35px;
     padding-bottom: 1.3vh;
     text-align: center;
-    width: 35vw;
+    width: 400px;
 }
 
 .entrada-itens{
     grid-area: entrada;
     height: 5vh;
-    width: 25vw;
+    width: 220px;
     font-size: 22px;
     border-radius: 1rem;
     border-color: black;
@@ -59,7 +60,7 @@ h1{
 .botao-adicionar{
     grid-area: botao-adicionar;
     height: 5vh;
-    width: 8vw;
+    width: 75px;
     margin-right: 2vw;
     border-color: rgb(255, 255, 255);
     border-radius: 1rem;
@@ -67,7 +68,7 @@ h1{
     color: white;
     text-align: center;
     align-self: center;
-    justify-self: end;
+    justify-self: center;
 }
 
 .botao-adicionar:hover{
@@ -95,14 +96,22 @@ h1{
 
 .itens-lista{
     height: 2vh;
-    width: 30vw;
+    width: auto;
 }
 
 .linha-entre-itens{
     border-top: 1px solid #8c8b8b;
-    width: 15vw;
+    width: 280px;
 }
 
 @media (max-width: 880px){
 
+}
+
+@media (button: hover) {
+    button:hover {
+        background-color: rgb(255, 255, 255);
+        border-color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
+    }
 }

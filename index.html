@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./CSS/styles.css" />
     <script src="./JavaScript/script.js"></script>
-    <title>Document</title>
+    <title>Lista de Compras</title>
   </head>
 
   <body>
@@ -18,10 +18,13 @@
         <input
           type="text"
           class="entrada-itens"
+          id="entrada-itens"
           placeholder="Adicione um item"
         />
-        <button class="botao-adicionar">Adicionar</button>
-        <div class="itens-lista">Itens aqui...</div>
+        <button class="botao-adicionar" onclick="pegarValorInput()">
+          Adicionar
+        </button>
+        <div class="lista" id="lista" aria-placeholder="aaa"></div>
       </div>
     </section>
   </body>

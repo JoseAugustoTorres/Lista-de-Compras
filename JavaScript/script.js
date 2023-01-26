@@ -39,7 +39,9 @@ function mostrarListaTela() {
   var blocoIcone = document.createElement("span");
   var iconeExcluir = document.createElement("i");
 
-  mensagem.remove();
+  if (mensagem.textContent !== "") {
+    mensagem.textContent = "";
+  }
 
   itens.classList.add("itens");
   telaLista.appendChild(itens);

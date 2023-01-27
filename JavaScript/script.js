@@ -1,60 +1,106 @@
-let lista = [];
+/*
+ Detectando se a tecla 'Enter' foi pressionada, 
+para ter a mesma funcionalidade do botão 'Adicionar
+*/
 let teclaPressionada = document.getElementById("entrada-itens");
-
 teclaPressionada.addEventListener("keydown", (evento) => {
   if (evento.key === "Enter") {
     pegarValorInput();
   }
 });
 
-function pegarValorInput() {
-  var regex = /^[A-zÀ-ú ]+$/;
-  var valorEntrada = document.getElementById("entrada-itens").value;
-  valorEntrada = valorEntrada.trim();
+// Classe onde é realizado a criação dos objetos, utilizando um método construtor.
+class Item {
+  constructor(nome) {
+    this.nome = nome;
+  }
+}
 
-  if (valorEntrada === undefined) {
+// Lista onde será armazenado objetos contendo cada item
+let lista = [];
+
+//Função que pega o valor digitado no campo input.
+function pegarValorInput() {
+  // variável onde armazena os valores aceitos.
+  // Letras maiúsculas e minúsculas, letras com acentos e espaços entre palavras.
+  var regex = /^[A-zÀ-ú ]+$/;
+  var novoItem = document.getElementById("entrada-itens").value;
+  // Removendo possíveis espaços em branco no começo e no fim do texto.
+  novoItem = novoItem.trim();
+
+  if (novoItem === undefined) {
     alert("Nenhum item informado");
     return limparEntrada();
-  } else if (!valorEntrada.match(regex)) {
+    // Verificando se o input é vazio.
+  } else if (!novoItem.match(regex)) {
     alert("Caracteres inválidos");
     return limparEntrada();
+    // Verificando se o input contém os caracteres permitidos.
   }
+  // Passando o texto para letras minúsculas.
+  novoItem.toLowerCase();
 
-  valorEntrada.toLowerCase();
-
-  adicionarItens(valorEntrada);
+  criarObjeto(novoItem);
 }
 
-function adicionarItens(valorEntrada) {
-  lista.push(valorEntrada);
+function criarObjeto(novoItem) {
+  let novoObjeto = new Item(novoItem);
 
-  mostrarListaTela();
+  adicionarItens(novoObjeto);
 }
 
-function mostrarListaTela() {
-  var mensagem = document.getElementById("msg-lista");
-  var telaLista = document.getElementById("lista");
-  var itens = document.createElement("li");
-  var blocoItem = document.createElement("label");
-  var blocoIcone = document.createElement("span");
-  var iconeExcluir = document.createElement("i");
+function adicionarItens(novoObjeto) {
+  lista.push(novoObjeto);
 
-  if (mensagem.textContent !== "") {
-    mensagem.textContent = "";
+  mostrarItensLista();
+}
+
+function mostrarItensLista() {
+  var msg = document.getElementById("msg-lista");
+  var unorderedList = document.getElementById("lista");
+  // Criando elementos HTML
+  var listItem = document.createElement("li");
+  var label = document.createElement("label");
+  var span = document.createElement("span");
+  var icon = document.createElement("i");
+
+  //removendo mensagem de texto
+  if (msg.textContent !== "") {
+    msg.textContent = "";
   }
 
-  itens.classList.add("itens");
-  telaLista.appendChild(itens);
+  //definindo a classe e o id da 'li'.
+  listItem.classList.add("itens");
+  listItem.setAttribute("id", `${lista.length - 1}`);
+  label.textContent = lista[lista.length - 1].nome;
 
-  blocoItem.textContent = lista.slice(-1);
-  itens.appendChild(blocoItem);
+  /*
+  Atribuindo elementos conforme exemplo:
+  <ul>
+    <li>
+      <label> 
+        Item aqui 
+      </label>
+      <span>
+        <i> 
+          Icone aqui
+        </i>
+      </span>
+    </li>
+    .
+    .
+    .
+  </ul>
+  */
 
-  itens.appendChild(blocoIcone);
+  unorderedList.appendChild(listItem);
+  listItem.appendChild(label);
+  listItem.appendChild(span);
+  span.appendChild(icon);
 
-  iconeExcluir.classList.add("bx", "bx-trash");
-  blocoIcone.appendChild(iconeExcluir);
-
-  blocoIcone.setAttribute("onclick", "excluirItem()");
+  // Definindo classe e elemento 'onclick'
+  span.setAttribute("onclick", `excluirItem(${lista.length - 1})`);
+  icon.classList.add("bx", "bx-trash");
 
   limparEntrada();
 }
@@ -64,4 +110,17 @@ function limparEntrada() {
   valorEntrada.value = "";
 }
 
-function excluirItem() {}
+function excluirItem(idItem) {
+  var msg = document.getElementById("msg-lista");
+  var telaLista = document.getElementById("lista");
+  // Removendo item da tela
+  telaLista.removeChild(document.getElementById(`${idItem}`));
+  // Removendo item da lista[]
+  lista.splice(idItem, 1);
+
+  // Caso a tela fique vazia, a mensagem inicial voltará a ser exibida
+  if (lista.length === 0) {
+    msg.textContent =
+      "Digite um item e adicione à lista clicando no botão ou pressione atecla 'Enter'.";
+  }
+}

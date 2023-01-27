@@ -71,7 +71,7 @@ function mostrarItensLista() {
 
   //definindo a classe e o id da 'li'.
   listItem.classList.add("itens");
-  listItem.setAttribute("id", `${lista.length - 1}`);
+  listItem.setAttribute("id", `${lista.length}`);
   label.textContent = lista[lista.length - 1].nome;
 
   /*
@@ -99,7 +99,7 @@ function mostrarItensLista() {
   span.appendChild(icon);
 
   // Definindo classe e elemento 'onclick'
-  span.setAttribute("onclick", `excluirItem(${lista.length - 1})`);
+  span.setAttribute("onclick", `excluirItem(${lista.length})`);
   icon.classList.add("bx", "bx-trash");
 
   limparEntrada();
@@ -116,11 +116,23 @@ function excluirItem(idItem) {
   // Removendo item da tela
   telaLista.removeChild(document.getElementById(`${idItem}`));
   // Removendo item da lista[]
-  lista.splice(idItem, 1);
-
+  lista.splice(idItem - 1, 1);
   // Caso a tela fique vazia, a mensagem inicial voltará a ser exibida
   if (lista.length === 0) {
     msg.textContent =
       "Digite um item e adicione à lista clicando no botão ou pressione atecla 'Enter'.";
+  }
+
+  corrigirIDs(idItem);
+}
+
+function corrigirIDs(idItem) {
+  var listItem;
+  for (i = 1; i <= lista.length + 1; i++) {
+    listItem = document.getElementById(`${i}`);
+    if (idItem < i) {
+      listItem.setAttribute("id", `${i - 1}`);
+      listItem.lastChild.setAttribute("onclick", `excluirItem(${i - 1})`);
+    }
   }
 }

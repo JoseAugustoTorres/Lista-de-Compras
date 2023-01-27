@@ -167,4 +167,12 @@ span{
         margin: 0;
         margin-top: 15px;
     }
+
+    #bloco-itens{
+        font-size: 12px;
+    }
+
+    .itens{
+        width: 170px;
+    }
 }
